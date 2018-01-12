@@ -135,7 +135,7 @@ class HomeActivity extends Component {
                   }
               </View>
 
-              <View style = {{flex: 1, width: '100%', height: '100%'}}>
+              <View style = {{flex: 1}}>
                 {this.state.selectedTab === "GOLD" &&
                   <GoldTab navigation = {this.props.navigation} />
                 }
