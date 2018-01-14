@@ -87,28 +87,23 @@ class HitRate extends Component {
       onClose={() => closeDrawer()} >
 
         <Container>
-          <View style = {{flex: 0.15}}>
+        <Image style = {{resizeMode: "stretch", position: 'absolute', height: 150}} source = {require('../../components/Images/action_bar_bg.png')} />
 
-            <View style = {tabStyle}>
-              <Image style = {{flex: 1, resizeMode: "stretch"}} source = {require('../../components/Images/action_bar_bg.png')} />
-            </View>
-
-            <Header hasTabs style = {{backgroundColor: 'transparent'}} >
-              <Left>
-                <Button transparent>
-                  <Icon name='menu' />
-                </Button>
-              </Left>
-              <Body>
-                <Title> MY RECORD </Title>
-              </Body>
-              <Right>
-                <Button transparent >
-                  <Icon name='share' />
-                </Button>
-              </Right>
-            </Header>
-          </View>
+        <Header hasTabs style = {{backgroundColor: 'transparent'}} >
+          <Left>
+            <Button transparent>
+              <Icon name='menu' />
+            </Button>
+          </Left>
+          <Body>
+            <Title> TREND </Title>
+          </Body>
+          <Right>
+            <Button transparent >
+              <Icon name='share' />
+            </Button>
+          </Right>
+        </Header>
 
           <View style = {{flex: 1}}>
             <View style = {{position: 'absolute'}}>
@@ -144,30 +139,24 @@ class HitRate extends Component {
 
           </View>
 
-          <View style = {{flex: 0.10}}>
+          <Image style = {{resizeMode: "stretch", position: 'absolute', bottom: 0, height: 55}} source = {require('../../components/Images/bottom_bar_bg.png')} />
 
-            <View style = {{position: 'absolute'}}>
-                <Image style = {{flex: 1, resizeMode: "stretch"}} source = {require('../../components/Images/bottom_bar_bg.png')} />
-            </View>
-
-            <Footer style = {{backgroundColor: 'transparent'}}>
-              <FooterTab  style = {footerStyle}>
-                <Button active = {this.state.trendTab} onPress = { () => this.toggleTrendTab() }>
-                  <Text>Trend</Text>
-                </Button >
-                <Button active = {this.state.hitRateTab} onPress = { () => this.toggleHitRateTab() } >
-                  <Text>Our Record</Text>
-                </Button>
-                <Button active = {this.state.recordTab} onPress = { () => this.toggleRecordTab() }>
-                  <Text>My Record</Text>
-                </Button>
-                <Button active = {this.state.riskRateTab} onPress = { () => this.toggleRiskRateTab() }>
-                  <Text>Risk Ratio</Text>
-                </Button>
-              </FooterTab>
-            </Footer>
-
-          </View>
+          <Footer style = {{backgroundColor: 'transparent', position: 'absolute', bottom: 0}}>
+            <FooterTab  style = {footerStyle}>
+              <Button active = {this.state.trendTab} onPress = { () => this.toggleTrendTab() }>
+                <Text>Trend</Text>
+              </Button >
+              <Button active = {this.state.hitRateTab} onPress = { () => this.toggleHitRateTab() } >
+                <Text>Our Record</Text>
+              </Button>
+              <Button active = {this.state.recordTab} onPress = { () => this.toggleRecordTab() }>
+                <Text>My Record</Text>
+              </Button>
+              <Button active = {this.state.riskRateTab} onPress = { () => this.toggleRiskRateTab() }>
+                <Text>Risk Ratio</Text>
+              </Button>
+            </FooterTab>
+          </Footer>
 
         </Container>
 

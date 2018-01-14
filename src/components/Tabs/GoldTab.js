@@ -106,10 +106,10 @@ class GoldTab extends Component {
              <Content>
                <Grid>
                  <Col>
-                   <Image style = {{width: 50, height: 50, resizeMode: 'contain', marginLeft: 5, marginTop: 20}} source = {require('../../components/Images/bear.png')} />
+                   <Image style = {{width: 50, height: 50, resizeMode: 'contain', marginLeft: 10, marginTop: 20}} source = {require('../../components/Images/bear.png')} />
                  </Col>
 
-                 <Col size={6}>
+                 <Col size={4}>
                    <View style = {{flexDirection:'column', alignItems: 'center', justifyContent: 'space-around'}}>
                      <Image style = {{width: 300, height: 200, resizeMode: 'contain'}} source = {require('../../components/Images/barometer.png')}  />
 
@@ -125,7 +125,7 @@ class GoldTab extends Component {
                  </Col>
 
                  <Col>
-                   <Image style = {{width: 50, height: 50,  resizeMode: 'contain', marginRight: 5, marginTop: 20}} source = {require('../../components/Images/bull.png')} />
+                   <Image style = {{width: 50, height: 50,  resizeMode: 'contain', marginRight: 10, marginTop: 20}} source = {require('../../components/Images/bull.png')} />
                  </Col>
                </Grid>
 
@@ -148,7 +148,7 @@ class GoldTab extends Component {
                <Grid>
                 <Col>
 
-                  <View style = {{justifyContent: 'space-around', alignItems: 'flex-start', paddingTop: 50, paddingLeft: 30}}>
+                  <View style = {{justifyContent: 'space-around', alignItems: 'flex-start', paddingTop: 100, paddingLeft: 30}}>
                     <View style = {{
                          width: 40,
                          height: 40,
@@ -202,13 +202,13 @@ class GoldTab extends Component {
 
                 <Col>
                   <TouchableHighlight
-                    style = {{width: 50, height: 60,marginTop: 155, position: 'absolute'}}
+                    style = {{width: 50, height: 60,marginLeft: 50, marginTop: 230, position: 'absolute'}}
                     onPress = { () => this.goBtnRiskRatio() }>
                       <Image source = {require('../../components/Images/risk_ratio.png')} style = {{width: 50, height: 50, resizeMode: 'contain'}} />
                   </TouchableHighlight>
 
                   <ImageBackground
-                    style = {{width: 150, height: 200, marginLeft: 20, marginTop: 30}}
+                    style = {{width: 150, height: 200, marginLeft: 70, marginTop: 100}}
                     source = {require('../../components/Images/under_color.png') } >
                       {this.state.data.map(datas => (
                             (datas.risk_ratio_level === "low") &&

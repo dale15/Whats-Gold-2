@@ -17,7 +17,8 @@ class GoldTab extends Component {
                    data: [],
                    selectedIndex: 0,
                 };
-      this.updateIndex = this.updateIndex.bind(this);
+                this.updateIndex = this.updateIndex.bind(this);
+                this.RotateValueHolder = new Animated.Value(0);
 
   }
 
@@ -32,7 +33,7 @@ class GoldTab extends Component {
       this.RotateValueHolder,
       {
         toValue: 1,
-        duration: 3000,
+        duration: 1500,
         easing: Easing.linear
       }
     ).start();
@@ -53,6 +54,20 @@ class GoldTab extends Component {
        .then(response => {
          this.setState( {data: response.data} );
        });
+
+  }
+
+  StartImageRotateFunction() {
+    this.RotateValueHolder.setValue(0)
+
+    Animated.timing(
+      this.RotateValueHolder,
+      {
+        toValue: 1,
+        duration: 1500,
+        easing: Easing.linear
+      }
+    ).start();
 
   }
 
@@ -92,124 +107,148 @@ class GoldTab extends Component {
     })
 
     return(
+      <Container>
+
       <ImageBackground
         resizeMode = 'cover'
         source = {require('../../components/Images/bg_new.png')}
-        style = {{flex: 4, flexDirection: 'column'}}>
+        style = {{flex: 1}}>
+             <Content>
+               <Grid>
+                 <Col>
+                   <Image style = {{width: 50, height: 50, resizeMode: 'contain', marginLeft: 10, marginTop: 20}} source = {require('../../components/Images/bear.png')} />
+                 </Col>
 
-        <View style = {{flex: 1, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-around'}}>
-          <Image style = {{flex: 0.2, resizeMode: 'contain', marginLeft: 10, marginTop: -20}} source = {require('../../components/Images/bear.png')} />
+                 <Col size={4}>
+                   <View style = {{flexDirection:'column', alignItems: 'center', justifyContent: 'space-around'}}>
+                     <Image style = {{width: 300, height: 200, resizeMode: 'contain'}} source = {require('../../components/Images/barometer.png')}  />
 
-          <View style = {{flex: 1, flexDirection:'column', alignItems: 'center', justifyContent: 'space-around'}}>
-            <Image style = {{flex: 0.8, resizeMode: 'contain', marginTop: 5}} source = {require('../../components/Images/barometer.png')}  />
+                     <Text style = {{flex: 0.05, position: 'absolute', color: "#fff", textAlign: 'center', marginTop: 40}}> {livePrice} </Text>
 
-            <Text style = {{flex: 0.05, position: 'absolute', color: "#fff", textAlign: 'center', marginTop: 40}}> {livePrice} </Text>
+                     <Text style = {{flex: 0.05, position: 'absolute', color: "#e5be42", marginTop: 60}}> Live Price </Text>
 
-            <Text style = {{flex: 0.05, position: 'absolute', color: "#e5be42", marginTop: 60}}> Live Price </Text>
+                     <Animated.Image
+                       style = { {width: 200, height: 200, marginTop: 70, position: 'absolute', resizeMode: 'contain', transform: [{rotate: RotateData}] } }
+                       source = {require('../../components/Images/arrow.png')} />
 
-            <Animated.Image
-              style = { {flex: 0.1, resizeMode: 'contain', marginTop: -25, transform: [{rotate: RotateData}] } }
-              source = {require('../../components/Images/arrow.png')} />
+                   </View>
+                 </Col>
 
-          </View>
+                 <Col>
+                   <Image style = {{width: 50, height: 50,  resizeMode: 'contain', marginRight: 10, marginTop: 20}} source = {require('../../components/Images/bull.png')} />
+                 </Col>
+               </Grid>
 
-          <Image style = {{flex: 0.2, resizeMode: 'contain', marginRight: 10, marginTop: -20}} source = {require('../../components/Images/bull.png')} />
-        </View>
+               <Grid>
+                 <Row size = {1}>
+                   <View style = {{flex: 1, flexDirection:'column', alignItems: 'center'}}>
+                     <Image style = {{width: 50, height: 50, resizeMode: 'contain'}} source = {require('../../components/Images/arrow_handler.png')}  />
+                     <ButtonGroup
+                       onPress = {this.updateIndex}
+                       selectedIndex = {this.state.selectedIndex}
+                       buttons = {buttons}
+                       selectedBackgroundColor = 'gold'
+                       textStyle = {{color: '#e5be42', fontSize: 10}}
+                       containerStyle = {{width: '90%', height: 30, backgroundColor: '#000'}}>
+                     </ButtonGroup>
+                   </View>
+                 </Row>
+               </Grid>
 
-        <View style = {{flex: 1, flexDirection:'column', alignItems: 'center'}}>
-          <Image style = {{flex: 0.3, resizeMode: 'contain'}} source = {require('../../components/Images/arrow_handler.png')}  />
-          <ButtonGroup
-            onPress = {this.updateIndex}
-            selectedIndex = {this.state.selectedIndex}
-            buttons = {buttons}
-            selectedBackgroundColor = 'gold'
-            textStyle = {{color: '#e5be42', fontSize: 10}}
-            containerStyle = {{flex: 0.1, backgroundColor: '#000'}}>
-          </ButtonGroup>
-        </View>
+               <Grid>
+                <Col>
 
-        <View style = {{flex: 1, flexDirection: 'column', alignItems: 'flex-start'}}>
+                  <View style = {{justifyContent: 'space-around', alignItems: 'flex-start', paddingTop: 100, paddingLeft: 30}}>
+                    <View style = {{
+                         width: 40,
+                         height: 40,
+                         marginLeft: 30,
+                         borderRadius: 30,
+                         backgroundColor: 'green',
+                         alignItems: 'center',
+                         justifyContent: 'center',
+                         transform: [ {scaleX: 2} ]}} >
+                           {this.state.data.map(datas => (
+                                 <Text key = {datas.id} style = {{backgroundColor: 'transparent', fontSize: 10}}> { datas.entry_point }  </Text>
+                               ))
+                             }
+                    </View>
+                    <Text style = {{fontSize: 16, backgroundColor: 'transparent', color: '#fff', marginLeft: 10, marginBottom: 10}}> Entry Point </Text>
 
-        </View>
+                    <View style = {{
+                          width: 40,
+                          height: 40,
+                          marginLeft: 30,
+                          borderRadius: 30,
+                          backgroundColor: 'gold',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          transform: [ {scaleX: 2} ]}} >
+                            {this.state.data.map(datas => (
+                                <Text key = {datas.id} style = {{backgroundColor: 'transparent', fontSize: 10}}> { datas.stop_loss }  </Text>
+                              ))
+                            }
+                    </View>
+                    <Text style = {{fontSize: 16, backgroundColor: 'transparent', color: '#fff', marginLeft: 10, marginBottom: 10}}> Stop Loss </Text>
 
-        <View style = {{flex: 1, flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'space-around'}}>
+                    <View style = {{
+                          width: 40,
+                          height: 40,
+                          marginLeft: 30,
+                          borderRadius: 30,
+                          backgroundColor: 'gold',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          transform: [ {scaleX: 2} ]}} >
+                            {this.state.data.map(datas => (
+                                <Text key = {datas.id} style = {{backgroundColor: 'transparent', fontSize: 10}}> { datas.profit_target }  </Text>
+                              ))
+                            }
+                    </View>
+                    <Text style = {{fontSize: 16, backgroundColor: 'transparent', color: '#fff', marginLeft: 5}}> Profit Target </Text>
+                  </View>
 
-        <View style = {{
-              flex: 0.3,
-              marginLeft: 30,
-              borderRadius: 30,
-              backgroundColor: 'green',
-              transform: [ {scaleX: 2} ]}} >
-                {this.state.data.map(datas => (
-                    <Text key = {datas.id} style = {{backgroundColor: 'transparent', fontSize: 12, marginTop: 10}}> { datas.entry_point }  </Text>
-                  ))
-                }
-        </View>
-        <Text style = {{fontSize: 14, backgroundColor: 'transparent', color: '#fff', marginLeft: 20}}> Entry Point </Text>
+                </Col>
 
-        <View style = {{
-              flex: 0.3,
-              marginLeft: 30,
-              borderRadius: 30,
-              backgroundColor: 'gold',
-              transform: [ {scaleX: 2} ]}} >
-                {this.state.data.map(datas => (
-                    <Text key = {datas.id} style = {{backgroundColor: 'transparent', fontSize: 12, marginTop: 10}}> { datas.stop_loss }  </Text>
-                  ))
-                }
-        </View>
-        <Text style = {{fontSize: 14, backgroundColor: 'transparent', color: '#fff', marginLeft: 20}}> Stop Loss </Text>
+                <Col>
+                  <TouchableHighlight
+                    style = {{width: 50, height: 60,marginLeft: 50, marginTop: 230, position: 'absolute'}}
+                    onPress = { () => this.goBtnRiskRatio() }>
+                      <Image source = {require('../../components/Images/risk_ratio.png')} style = {{width: 50, height: 50, resizeMode: 'contain'}} />
+                  </TouchableHighlight>
 
-        <View style = {{
-              flex: 0.3,
-              marginLeft: 30,
-              borderRadius: 30,
-              backgroundColor: 'gold',
-              transform: [ {scaleX: 2} ]}} >
-                {this.state.data.map(datas => (
-                    <Text key = {datas.id} style = {{backgroundColor: 'transparent', fontSize: 12, marginTop: 10}}> { datas.profit_target    }  </Text>
-                  ))
-                }
-        </View>
-        <Text style = {{fontSize: 14, backgroundColor: 'transparent', color: '#fff', marginLeft: 13}}> Profit Target </Text>
+                  <ImageBackground
+                    style = {{width: 150, height: 200, marginLeft: 70, marginTop: 100}}
+                    source = {require('../../components/Images/under_color.png') } >
+                      {this.state.data.map(datas => (
+                            (datas.risk_ratio_level === "low") &&
+                              <Image key = {datas.id} source = {require('../../components/Images/temp.png') } style = {{resizeMode: 'contain', width: 100, height: 100, marginLeft: 20}} />
+                             ||
+                              <Image key = {datas.id} source = {require('../../components/Images/temp_high.png') } style = {{resizeMode: 'contain', width: 100, height: 100, marginLeft: 20}} />
+                          )
+                        )
+                      }
 
-        <View style = {{position: 'absolute', flexDirection: 'row', alignItems: 'flex-end', bottom: -20, right: 0}}>
-          <TouchableHighlight
-            style = {{width: 50, height: 60, position: 'absolute', right: 130, bottom: 35}}
-            onPress = { () => this.goBtnRiskRatio() }>
-              <Image source = {require('../../components/Images/risk_ratio.png')} style = {{width: 50, height: 50, resizeMode: 'contain'}} />
-          </TouchableHighlight>
+                      <Text style = {{ backgroundColor: 'transparent', color: '#e5be42', marginLeft: 35, marginTop: 10}}> Risk Ratio </Text>
+                      <Text style = {{ backgroundColor: 'transparent', color: '#e5be42', marginLeft: 80, marginTop: 20, position: 'absolute',}}> High </Text>
+                      <Text style = {{ backgroundColor: 'transparent', color: '#e5be42', marginLeft: 80, marginTop: 60, position: 'absolute',}}> Low </Text>
 
-          <ImageBackground
-            style = {{width: 150, height: 200}}
-            source = {require('../../components/Images/under_color.png') } >
-              {this.state.data.map(datas => (
-                    (datas.risk_ratio_level === "low") &&
-                      <Image key = {datas.id} source = {require('../../components/Images/temp.png') } style = {{resizeMode: 'contain', width: 100, height: 100}} />
-                     ||
-                      <Image key = {datas.id} source = {require('../../components/Images/temp_high.png') } style = {{resizeMode: 'contain', width: 100, height: 100}} />
-                  )
-                )
-              }
+                      {this.state.data.map(datas =>
+                        <Button
+                          key = {datas.id}
+                          title={datas.risk_ratio}
+                          buttonStyle = {{backgroundColor: '#e5be42', width: 80, height: 10, marginLeft: 13, marginTop: 10}} />
+                        )
+                      }
+                  </ImageBackground>
+                </Col>
 
-              <Text style = {{ backgroundColor: 'transparent', color: '#e5be42', marginLeft: 20}}> Risk Ratio </Text>
-              <Text style = {{ backgroundColor: 'transparent', color: '#e5be42', marginLeft: 60, marginTop: 20, position: 'absolute',}}> High </Text>
-              <Text style = {{ backgroundColor: 'transparent', color: '#e5be42', marginLeft: 60, marginTop: 60, position: 'absolute',}}> Low </Text>
+               </Grid>
 
-              {this.state.data.map(datas =>
-                <Button
-                  key = {datas.id}
-                  title={datas.risk_ratio}
-                  buttonStyle = {{backgroundColor: '#e5be42', width: 80, height: 10}} />
-                )
-              }
-          </ImageBackground>
+             </Content>
+        </ImageBackground>
 
-        </View>
-
-        </View>
-
-      </ImageBackground>
+      </Container>
     );
   }
 }
