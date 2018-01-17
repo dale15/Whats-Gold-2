@@ -2,15 +2,11 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {Container, Header, Left, Right, Body, Icon, Button, Title, Drawer, Content, Footer, FooterTab } from 'native-base';
+import { Dropdown } from 'react-native-material-dropdown';
 import axios from 'axios';
 import SideBar from './SideBar';
 import RiskGoldTab from '../Tabs/RiskGoldTab';
-import EurTab from '../Tabs/EurTab';
-import SilverTab from '../Tabs/SilverTab';
-import SpxTab from '../Tabs/SpxTab';
-import WtiTab from '../Tabs/WtiTab';
-import DowTab from '../Tabs/DowTab';
-import NasdaqTab from '../Tabs/NasdaqTab';
+import Dimensions from 'Dimensions';
 
 class HitRate extends Component {
   constructor(props) {
@@ -98,7 +94,7 @@ class HitRate extends Component {
               </Button>
             </Left>
             <Body>
-              <Title> TREND </Title>
+              <Title> RISK RATIO </Title>
             </Body>
             <Right>
               <Button transparent >

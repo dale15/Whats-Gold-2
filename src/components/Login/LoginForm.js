@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {View, Text, TextInput, TouchableOpacity, Alert, StatusBar, StyleSheet} from 'react-native';
 import Button from './Button';
 import axios from 'axios';
-import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
+// import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import {AccessToken} from 'react-native-fbsdk';
 
 const onButtonPress = () => {
@@ -157,11 +157,11 @@ class LoginForm extends Component {
       }
       onLogoutFinished = { () => console.log("User logged out") } />
 
-      <GoogleSigninButton
+      {/* <GoogleSigninButton
       style={{width: 198, height: 40}}
       size={GoogleSigninButton.Size.Wide}
       color={GoogleSigninButton.Color.Light}
-      onPress={ () => { this._signIn(); } } />
+      onPress={ () => { this._signIn(); } } /> */}
 
       </View>
       <Text style = {{color: '#fff', marginTop: 10}}> NEED AN ACCOUNT?
