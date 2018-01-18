@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
 import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import {Container, Header, Left, Right, Body, Icon, Button, Title, Drawer, Content, Footer, FooterTab } from 'native-base';
+import {Container, Header, Left, Right, Body, Icon, Title, Drawer, Content, Footer, FooterTab, Button } from 'native-base';
 import { Dropdown } from 'react-native-material-dropdown';
 import axios from 'axios';
 import SideBar from './SideBar';

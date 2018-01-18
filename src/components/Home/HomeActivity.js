@@ -311,9 +311,6 @@ class HomeActivity extends Component {
                 <Button active = {this.state.trendTab} onPress = { () => this.toggleTrendTab() }>
                   <Text>Trend</Text>
                 </Button>
-                <Button active = {this.state.hitRateTab} onPress = { () => this.toggleHitRateTab() } >
-                  <Text>Our Record</Text>
-                </Button>
                 <Button active = {this.state.recordTab} onPress = { () => this.toggleRecordTab() }>
                   <Text>My Record</Text>
                 </Button>

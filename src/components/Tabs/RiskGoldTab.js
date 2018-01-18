@@ -53,7 +53,6 @@ class RiskGoldTab extends Component {
   }
 
   render() {
-    const buttons = ['3-7 days' , '7-15 days', '30 days', '90 days', '1 year'];
     const {mainContainer, leftRedBearStyle, rightGreenBullStyle, midContainer, input} = styles;
 
     let dataCurr = [{
@@ -82,15 +81,17 @@ class RiskGoldTab extends Component {
                 </View>
 
                 <View style = {{left: 0, flexDirection: 'row', marginTop: 20}}>
-                  <Text style = {{color: '#fff', marginLeft: 5, fontSize: 14, justifyContent: 'center', alignItems: 'center', marginTop: 10}}> Account currency </Text>
+                  <View style={{width: 100}} />
 
                   <Dropdown
                     label='Account Currency'
                     data={dataCurr}
-                    containerStyle={{height: 70, marginLeft: 20, width: 150}}
+                    containerStyle={{height: 70, marginLeft: 20, width: 320}}
                     pickerStyle={{backgroundColor: '#fff'}}
                     baseColor="#fff"
-                  />
+                    textColor="#fff"
+                    itemColor="#000"
+                    selectedItemColor="#000" />
 
                 </View>
 
@@ -136,15 +137,17 @@ class RiskGoldTab extends Component {
                 </View>
 
                 <View style = {{left: 0, flexDirection: 'row', marginTop: 20}}>
-                  <Text style = {{color: '#fff', marginLeft: 5, fontSize: 16, marginTop: 10}}> Currency pair </Text>
+                  <View style={{width: 100}} />
 
                   <Dropdown
                     label='Currency Pair'
                     data={dataPair}
-                    containerStyle={{height: 70, marginLeft: 20, width: 150}}
-                    pickerStyle={{backgroundColor: '#fff'}}
+                    containerStyle={{height: 70, marginLeft: 20, width: 320, color: '#fff'}}
+                    pickerStyle={{backgroundColor: '#fff', color: '#fff'}}
                     baseColor="#fff"
-                  />
+                    textColor="#fff"
+                    itemColor="#000"
+                    selectedItemColor="#000" />
 
                 </View>
 
@@ -160,7 +163,12 @@ class RiskGoldTab extends Component {
                   </TouchableOpacity>
                 </View>
 
-
+                <View style = {{alignItems: 'center', justifyContent: 'center'}}>
+                  <TouchableOpacity
+                    style = {{backgroundColor: '#fff', width: 150, height: 50, marginTop: 20, alignItems: 'center', justifyContent: 'center'}}>
+                    <Text> Calculate </Text>
+                  </TouchableOpacity>
+                </View>
 
             </ImageBackground>
 
@@ -176,7 +184,7 @@ const styles = StyleSheet.create ({
   mainContainer: {
     flex: 1,
     width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height - 30,
+    height: Dimensions.get("window").height - 40,
   },
   midContainer: {
       justifyContent: 'center',
