@@ -77,7 +77,7 @@ class RiskGoldTab extends Component {
               style = {mainContainer}>
 
                 <View style = {{alignItems: 'center', justifyContent: 'center'}}>
-                  <Text style = {{color: '#e5be42', fontSize: 26, fontWeight: 'bold', marginTop: 20}}> RISK RATIO </Text>
+                  <Text style = {{backgroundColor: 'transparent', color: '#e5be42', fontSize: 26, fontWeight: 'bold', marginTop: 20}}> RISK RATIO </Text>
                 </View>
 
                 <View style = {{left: 0, flexDirection: 'row', marginTop: 20}}>
@@ -96,7 +96,7 @@ class RiskGoldTab extends Component {
                 </View>
 
                 <View style = {{left: 0, flexDirection: 'row', marginTop: 20}}>
-                  <Text style = {{color: '#fff', marginLeft: 5, fontSize: 16, marginTop: 10}}> Account Size </Text>
+                  <Text style = {{backgroundColor: 'transparent', color: '#fff', marginLeft: 5, fontSize: 16, marginTop: 10}}> Account Size </Text>
 
                   <TextInput style = {input}
                   underlineColorAndroid="transparent"
@@ -108,7 +108,7 @@ class RiskGoldTab extends Component {
                 </View>
 
                 <View style = {{left: 0, flexDirection: 'row', marginTop: 20}}>
-                  <Text style = {{color: '#fff', marginLeft: 5, fontSize: 16, marginTop: 10, marginRight: 10}}> Risk Ratio, % </Text>
+                  <Text style = {{backgroundColor: 'transparent', color: '#fff', marginLeft: 5, fontSize: 16, marginTop: 10, marginRight: 10}}> Risk Ratio, % </Text>
 
                   <TextInput style = {{flex: 1,
                   height: 35,
@@ -123,7 +123,7 @@ class RiskGoldTab extends Component {
                 </View>
 
                 <View style = {{left: 0, flexDirection: 'row', marginTop: 20}}>
-                  <Text style = {{color: '#fff', marginLeft: 5, fontSize: 16, marginTop: 10}}> Stop Loss, pips </Text>
+                  <Text style = {{backgroundColor: 'transparent', color: '#fff', marginLeft: 5, fontSize: 16, marginTop: 10}}> Stop Loss, pips </Text>
 
                   <TextInput style = {{flex: 1,
                   height: 35,
@@ -153,7 +153,7 @@ class RiskGoldTab extends Component {
 
                 <View style = {{alignItems: 'center', justifyContent: 'center'}}>
                   <TouchableOpacity
-                    style = {{backgroundColor: '#fff', width: 150, height: 50, marginTop: 20, alignItems: 'center', justifyContent: 'center'}}>
+                    style = {{backgroundColor: 'transparent', width: 150, height: 50, marginTop: 20, alignItems: 'center', justifyContent: 'center'}}>
                     <Text> Calculate </Text>
                   </TouchableOpacity>
                 </View>
