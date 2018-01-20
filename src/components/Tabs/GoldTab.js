@@ -19,8 +19,6 @@ class GoldTab extends Component {
       this.updateIndex = this.updateIndex.bind(this);
       this.RotateValueHolder = new Animated.Value(0);
 
-      console.log(this.state.selectedTabs + " " + props.tabSelected);
-
   }
 
   componentDidMount() {
@@ -61,8 +59,6 @@ class GoldTab extends Component {
       } else {
         let category = this.state.selectedTabs;
       }
-
-      console.log(category);
 
       axios.get('http://whatsgold.com/index.php?option=com_api&view=webservicess&task=latest_entrypoint_stoploss_closepoint_deta&category='+category)
       .then(response => {
@@ -115,8 +111,8 @@ class GoldTab extends Component {
       <Container>
         <Content>
 
-          <View
-            style = {{flex:1, backgroundColor: "#22140B"}}>
+        <ImageBackground
+          style={{backgroundColor: "#22140B"}}>
 
             <Grid>
               <Col>
@@ -142,21 +138,7 @@ class GoldTab extends Component {
                 <Image style = {{width: 50, height: 50,  resizeMode: 'contain', marginRight: 10, marginTop: 20}} source = {require('../../components/Images/bull.png')} />
               </Col>
             </Grid>
-            {/* <Grid>
-              <Row size = {1}>
-                <View style = {{flex: 1, flexDirection:'column', alignItems: 'center'}}>
-                  <Image style = {{width: 50, height: 50, resizeMode: 'contain'}} source = {require('../../components/Images/arrow_handler.png')}  />
-                  <ButtonGroup
-                    onPress = {this.updateIndex}
-                    selectedIndex = {this.state.selectedIndex}
-                    buttons = {buttons}
-                    selectedBackgroundColor = 'gold'
-                    textStyle = {{color: '#e5be42', fontSize: 10}}
-                    containerStyle = {{width: '90%', height: 20, backgroundColor: '#000'}}>
-                  </ButtonGroup>
-                </View>
-              </Row>
-            </Grid> */}
+
             <View style={styles.graphContainer}>
               <TouchableOpacity>
                 <Image style = {{marginBottom: 5}} source = {require('../../components/Images/arrow_handler.png')}  />
@@ -169,8 +151,7 @@ class GoldTab extends Component {
                 textStyle = {{color: '#e5be42', fontSize: 10}}
                 containerStyle = {{width: '90%', height: 20, backgroundColor: '#000'}}>
               </ButtonGroup>
-          </View>
-          </View>
+            </View>
 
           <ImageBackground
           resizeMode = 'cover'
@@ -235,14 +216,12 @@ class GoldTab extends Component {
               </View>
               <View style={styles.rightSideContainer}>
                 <Image style={styles.underColorImage}
-                        source = {require('../../components/Images/under_color.png') }
-                      />
+                        source = {require('../../components/Images/under_color.png') } />
                 <View style={styles.thermometerContainer}>
                   <View style={styles.thermometerIconContainer}>
                     <View style={styles.thermometerImageContainer}>
                       <Image
-                        source = {require('../../components/Images/temp_high.png') }
-                      />
+                        source = {require('../../components/Images/temp_high.png') } />
                     </View>
                     <View style={styles.thermometerHighLowContainer}>
                       <View style={styles.highContainer}>
@@ -270,98 +249,9 @@ class GoldTab extends Component {
             </View>
           </View>
           </ImageBackground>
-            {/* <Grid>
-            <Col>
-
-              <View style = {{justifyContent: 'space-around', alignItems: 'flex-start', paddingTop: 100, paddingLeft: 30}}>
-                <View style = {{
-                      width: 40,
-                      height: 40,
-                      marginLeft: 30,
-                      borderRadius: 30,
-                      backgroundColor: 'green',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      transform: [ {scaleX: 2} ]}} >
-                        {this.state.data.map(datas => (
-                              <Text key = {datas.id} style = {{backgroundColor: 'transparent', fontSize: 10}}> { datas.entry_point }  </Text>
-                            ))
-                          }
-                </View>
-                <Text style = {{fontSize: 16, backgroundColor: 'transparent', color: '#fff', marginLeft: 10, marginBottom: 10}}> Entry Point </Text>
-
-                <View style = {{
-                      width: 40,
-                      height: 40,
-                      marginLeft: 30,
-                      borderRadius: 30,
-                      backgroundColor: 'gold',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      transform: [ {scaleX: 2} ]}} >
-                        {this.state.data.map(datas => (
-                            <Text key = {datas.id} style = {{backgroundColor: 'transparent', fontSize: 10}}> { datas.stop_loss }  </Text>
-                          ))
-                        }
-                </View>
-                <Text style = {{fontSize: 16, backgroundColor: 'transparent', color: '#fff', marginLeft: 10, marginBottom: 10}}> Stop Loss </Text>
-
-                <View style = {{
-                      width: 40,
-                      height: 40,
-                      marginLeft: 30,
-                      borderRadius: 30,
-                      backgroundColor: 'gold',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      transform: [ {scaleX: 2} ]}} >
-                        {this.state.data.map(datas => (
-                            <Text key = {datas.id} style = {{backgroundColor: 'transparent', fontSize: 10}}> { datas.profit_target }  </Text>
-                          ))
-                        }
-                </View>
-                <Text style = {{fontSize: 16, backgroundColor: 'transparent', color: '#fff', marginLeft: 5}}> Profit Target </Text>
-              </View>
-
-            </Col>
-
-            <Col>
-              <TouchableHighlight
-                style = {{width: 50, height: 60,marginLeft: 50, marginTop: 230, position: 'absolute'}}
-                onPress = { () => this.goBtnRiskRatio() }>
-                  <Image source = {require('../../components/Images/risk_ratio.png')} style = {{width: 50, height: 50, resizeMode: 'contain'}} />
-              </TouchableHighlight>
-
-              <ImageBackground
-                style = {{width: 150, height: 200, marginLeft: 70, marginTop: 100}}
-                source = {require('../../components/Images/under_color.png') } >
-                  {this.state.data.map(datas => (
-                        (datas.risk_ratio_level === "low") &&
-                          <Image key = {datas.id} source = {require('../../components/Images/temp.png') } style = {{resizeMode: 'contain', width: 100, height: 100, marginLeft: 20}} />
-                          ||
-                          <Image key = {datas.id} source = {require('../../components/Images/temp_high.png') } style = {{resizeMode: 'contain', width: 100, height: 100, marginLeft: 20}} />
-                      )
-                    )
-                  }
-
-                  <Text style = {{ backgroundColor: 'transparent', color: '#e5be42', marginLeft: 35, marginTop: 10}}> Risk Ratio </Text>
-                  <Text style = {{ backgroundColor: 'transparent', color: '#e5be42', marginLeft: 80, marginTop: 20, position: 'absolute',}}> High </Text>
-                  <Text style = {{ backgroundColor: 'transparent', color: '#e5be42', marginLeft: 80, marginTop: 60, position: 'absolute',}}> Low </Text>
-
-                  {this.state.data.map(datas =>
-                    <Button
-                      key = {datas.id}
-                      title={datas.risk_ratio}
-                      buttonStyle = {{backgroundColor: '#e5be42', width: 80, height: 10, marginLeft: 13, marginTop: 10}} />
-                    )
-                  }
-              </ImageBackground>
-            </Col>
-
-            </Grid> */}
+        </ImageBackground>
         </Content>
       </Container>
-
     );
   }
 }
@@ -377,7 +267,7 @@ const styles = StyleSheet.create ({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 15,
-    marginBottom: 40
+    marginBottom: 176
   },
   underColorImage: {
     position: 'absolute',

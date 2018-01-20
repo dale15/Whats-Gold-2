@@ -151,18 +151,6 @@ class RiskGoldTab extends Component {
 
                 </View>
 
-                <View style = {{left: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', marginTop: 20}}>
-                  <TouchableOpacity>
-                    <Image source = {require('../../components/Images/risk_money.png')} style = {{width: 100, height: 50, resizeMode: 'contain', marginRight: 10, marginLeft: 10}} />
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <Image source = {require('../../components/Images/risk_unit.png')} style = {{width: 100, height: 50, resizeMode: 'contain'}} />
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <Image source = {require('../../components/Images/risk_lot.png')} style = {{width: 100, height: 50, resizeMode: 'contain', marginLeft: 10}} />
-                  </TouchableOpacity>
-                </View>
-
                 <View style = {{alignItems: 'center', justifyContent: 'center'}}>
                   <TouchableOpacity
                     style = {{backgroundColor: '#fff', width: 150, height: 50, marginTop: 20, alignItems: 'center', justifyContent: 'center'}}>

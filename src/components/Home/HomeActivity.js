@@ -4,12 +4,6 @@ import {Container, Header,Left, Right, Body,Icon,Button,Title, Drawer, Content, 
 import SideBar from './SideBar';
 import axios from 'axios';
 import GoldTab from '../Tabs/GoldTab';
-import EurTab from '../Tabs/EurTab';
-import SilverTab from '../Tabs/SilverTab';
-import SpxTab from '../Tabs/SpxTab';
-import WtiTab from '../Tabs/WtiTab';
-import DowTab from '../Tabs/DowTab';
-import NasdaqTab from '../Tabs/NasdaqTab';
 import { Dimensions } from "react-native";
 
 const { width, height } = Dimensions.get("window");
@@ -92,34 +86,11 @@ class HomeActivity extends Component {
         onClose={() => closeDrawer()}>
 
           <Container>
-              {/* <Image style = {{resizeMode: "stretch", position: 'absolute', height: 80}} source = {require('../../components/Images/action_bar_bg.png')} /> */}
-              <ImageBackground
+            <ImageBackground
                 resizeMode = 'cover'
                 source = {require('../Images/action_bar_bg.png')}
                 style = {{backgroundColor: "#22140B", resizeMode: "stretch", height: 160, width: width}}>
-                {/* <Header hasTabs style = {{backgroundColor: 'transparent'}} >
-                  <Left>
-                    <Button transparent>
-                      <Icon name='menu' />
-                    </Button>
-                  </Left>
-                  <Body>
-                    <Title> TREND </Title>
-                  </Body>
-                  <Right>
-                    <Button transparent >
-                      <Icon name='share' />
-                    </Button>
-                  </Right>
-                </Header> */}
-                {/* <View style={styles.headerButtonContainer}>
-                  <View style={styles.headerButtonUpperContainer}>
-                    <Text>Hello</Text>
-                  </View>
-                  <View style={styles.headerButtonLowerContainer}>
-                   <Text>Hello</Text>
-                  </View>
-                </View> */}
+
                 <View style={styles.headerContainer}>
                   <View style={styles.headerLeftContainer}>
                     <Button transparent>
@@ -136,13 +107,6 @@ class HomeActivity extends Component {
                   </View>
                 </View>
                 <View style={styles.upperCategoryContainer}>
-                  {/* <TouchableOpacity
-                      style = {{flex: 0.5, padding: 10, marginLeft: 5, marginRight: 10, backgroundColor: '#e5be42', justifyContent: 'center', alignItems: 'center'}}
-                      key = {"GOLD"}
-                      active  = { ("GOLD" == this.state.selectedTab ? true : false) }
-                      onPress = { () => this.setState({selectedTab: "GOLD"}) }>
-                    <Text style = {{justifyContent: 'center', alignItems: 'center', textAlign: 'center', fontSize: 10}}> {"GOLD"} </Text>
-                  </TouchableOpacity> */}
                   <TouchableOpacity
                     style={styles.buttonContainer}
                     active  = { ("GOLD" == this.state.selectedTab ? true : false) }
@@ -189,74 +153,6 @@ class HomeActivity extends Component {
                   </TouchableOpacity>
                 </View>
               </ImageBackground>
-              {/* <ImageBackground
-                resizeMode = 'cover'
-                source = {require('../../components/Images/action_bar_bg.png')}>
-                <Text>Test</Text>
-              </ImageBackground> */}
-              {/* <View style = {{flex: 0.03, flexDirection: 'row'}}>
-                {this.state.categories.map(cat => (
-                      ( (cat.category == "GOLD" || cat.category == "EUR/USD" || cat.category == "WTI CRUDE" || cat.category == "SILVER") &&
-                        <TouchableOpacity
-                            style = {{flex: 0.5, marginLeft: 5, marginRight: 10, backgroundColor: '#e5be42', justifyContent: 'center', alignItems: 'center'}}
-                            key = {cat.category}
-                            active  = { (cat.category == this.state.selectedTab ? true : false) }
-                            onPress = { () => this.setState({selectedTab: cat.category}) }>
-                          <Text style = {{justifyContent: 'center', alignItems: 'center', textAlign: 'center', fontSize: 10}}> {cat.category} </Text>
-                        </TouchableOpacity>
-                      )
-                  ))
-                }
-              </View> */}
-              {/* <ImageBackground
-                resizeMode = 'cover'
-                source = {require('../../components/Images/action_bar_bg.png')}> */}
-                {/* <View style = {{flex: 0.03, flexDirection: 'row'}}>
-                  <TouchableOpacity
-                      style = {{flex: 0.5, padding: 10, marginLeft: 5, marginRight: 10, backgroundColor: '#e5be42', justifyContent: 'center', alignItems: 'center'}}
-                      key = {"GOLD"}
-                      active  = { ("GOLD" == this.state.selectedTab ? true : false) }
-                      onPress = { () => this.setState({selectedTab: "GOLD"}) }>
-                    <Text style = {{justifyContent: 'center', alignItems: 'center', textAlign: 'center', fontSize: 10}}> {"GOLD"} </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                      style = {{flex: 0.5, marginLeft: 5, marginRight: 10, backgroundColor: '#e5be42', justifyContent: 'center', alignItems: 'center'}}
-                      key = {"EUR/USD"}
-                      active  = { ("EUR/USD" == this.state.selectedTab ? true : false) }
-                      onPress = { () => this.setState({selectedTab: "EUR/USD"}) }>
-                    <Text style = {{justifyContent: 'center', alignItems: 'center', textAlign: 'center', fontSize: 10}}> {"EUR/USD"} </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                      style = {{flex: 0.5, marginLeft: 5, marginRight: 10, backgroundColor: '#e5be42', justifyContent: 'center', alignItems: 'center'}}
-                      key = {"WTI CRUDE"}
-                      active  = { ("WTI CRUDE" == this.state.selectedTab ? true : false) }
-                      onPress = { () => this.setState({selectedTab: "WTI CRUDE"}) }>
-                    <Text style = {{justifyContent: 'center', alignItems: 'center', textAlign: 'center', fontSize: 10}}> {"WTI CRUDE"} </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                      style = {{flex: 0.5, marginLeft: 5, marginRight: 10, backgroundColor: '#e5be42', justifyContent: 'center', alignItems: 'center'}}
-                      key = {"SILVER"}
-                      active  = { ("SILVER" == this.state.selectedTab ? true : false) }
-                      onPress = { () => this.setState({selectedTab: "SILVER"}) }>
-                    <Text style = {{justifyContent: 'center', alignItems: 'center', textAlign: 'center', fontSize: 10}}> {"SILVER"} </Text>
-                  </TouchableOpacity>
-                </View> */}
-              {/* </ImageBackground> */}
-
-                  {/* <View style = {{flex: 0.03, flexDirection: 'row', marginTop: 20, paddingBottom: 10}}>
-                      {this.state.categories.map(cat => (
-                            ( (cat.category == "DOW JONES" || cat.category == "SPX" || cat.category == "NASDAQ") &&
-                              <TouchableOpacity
-                                  style = {{flex: 0.5, marginLeft: 5, marginRight: 10, backgroundColor: '#e5be42', justifyContent: 'center', alignItems: 'center'}}
-                                  key = {cat.category}
-                                  active  = { (cat.category == this.state.selectedTab ? true : false) }
-                                  onPress = { () => this.setState({selectedTab: cat.category}) }>
-                                <Text style = {{justifyContent: 'center', alignItems: 'center', fontSize: 10}}> {cat.category} </Text>
-                              </TouchableOpacity>
-                            )
-                        ))
-                      }
-                  </View> */}
 
               <View style = {{flex: 1}}>
                 {this.state.selectedTab === "SILVER" &&
@@ -288,25 +184,10 @@ class HomeActivity extends Component {
                 }
               </View>
 
-              {/* <Footer style = {{backgroundColor: 'transparent', position: 'absolute', bottom: 0}}>
-                <FooterTab  style = {footerStyle}>
-                  <Button active = {this.state.trendTab} onPress = { () => this.toggleTrendTab() }>
-                    <Text>Trend</Text>
-                  </Button >
-                  <Button active = {this.state.hitRateTab} onPress = { () => this.toggleHitRateTab() } >
-                    <Text>Our Record</Text>
-                  </Button>
-                  <Button active = {this.state.recordTab} onPress = { () => this.toggleRecordTab() }>
-                    <Text>My Record</Text>
-                  </Button>
-                  <Button active = {this.state.riskRateTab} onPress = { () => this.toggleRiskRateTab() }>
-                    <Text>Risk Ratio</Text>
-                  </Button>
-                </FooterTab>
-              </Footer> */}
-
             <Footer style={styles.footer}>
-              <FooterTab>
+              <FooterTab
+                tabActiveBgColor = "#ffffff"
+                tabBarActiveTextColor = "#000000">
                 <Image style = {{resizeMode: "stretch", position: 'absolute', bottom: 0, height: 55}} source = {require('../../components/Images/bottom_bar_bg.png')} />
                 <Button active = {this.state.trendTab} onPress = { () => this.toggleTrendTab() }>
                   <Text>Trend</Text>
@@ -380,9 +261,6 @@ const styles = StyleSheet.create ({
       right: 0,
     },
     footer: {
-      backgroundColor: "transparent"
-    },
-    footerStyle: {
       backgroundColor: "transparent"
     },
     buttonCategoryContainer: {
